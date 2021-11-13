@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
 import Pagination from './common/pagination';
 import Like from './common/like';
-import { genres } from '../services/fakeGenreService';
+import { getGenres } from '../services/fakeGenreService';
 import ListGroup from './common/listGroup';
 import { paginate } from '../utils/paginate';
 
@@ -53,8 +53,10 @@ class Movies extends Component {
         const movies = paginate(allMovies, currentPage, pageSize)
         return (
             <div className="row">
-                <div className="col-2">
-                    <ListGroup items={this.state.genres} onItemSelect={this.handleGenreSelect} />
+                <div className="col-3">
+                    <ListGroup 
+                       items={this.state.genres}
+                       onItemSelect={this.handleGenreSelect} />
                 </div>
                 <div className="col">
                 <p>Showing {count} movies in the database. </p>
